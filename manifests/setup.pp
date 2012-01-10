@@ -14,7 +14,7 @@ class sshd::setup {
       $client_package = 'openssh-client'
     }
     centos, redhat : {
-      $client_package : 'openssh'
+      $client_package = 'openssh'
     }
   }
 
