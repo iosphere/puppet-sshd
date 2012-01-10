@@ -6,8 +6,8 @@ class sshd::setup {
     hasrestart => true,
     hasstatus => true,
     require => Package["openssh"]
-  }	
-  
+  }
+
   package {"openssh":
     ensure => installed
   }

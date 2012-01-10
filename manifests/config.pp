@@ -25,9 +25,9 @@
 #
 define sshd::config($value) {
   include sshd::setup
-  
+
   sshd_config{$name:
     value => $value,
-    notify => Service[sshd] 
+    notify => Service[sshd]
   }
 }

@@ -1,1 +1,2 @@
-class sshd {}
+class sshd {
+}
