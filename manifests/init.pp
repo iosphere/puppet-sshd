@@ -9,7 +9,6 @@ class sshd {
     sshd_config {
       $name :
         value   => $value,
-        require => Class['sshd::setup'],
         notify  => Service['sshd'];
     }
   }
