@@ -11,14 +11,28 @@ class sshd::setup {
     }
   }
 
-  service {
-    "sshd":
-      name       => $service_name,
-      enable     => true,
-      ensure     => running,
-      hasrestart => true,
-      hasstatus  => true,
-      require    => Package["openssh-server"]
+  if ($operatingsystem == 'ubuntu') and ($operatingsystemrelease == '16.04') {
+    service {
+      "sshd":
+        name       => $service_name,
+        enable     => true,
+        ensure     => running,
+        hasrestart => true,
+        hasstatus  => true,
+        provider   => 'systemd',
+        require    => Package['openssh-server']
+    }
+  } else {
+    # Debian
+    service {
+      "sshd":
+        name       => $service_name,
+        enable     => true,
+        ensure     => running,
+        hasrestart => true,
+        hasstatus  => true,
+        require    => Package['openssh-server']
+    }
   }
 
   package {
